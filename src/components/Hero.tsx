@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { Cpu, Zap, Shield, TrendingUp, Phone } from "lucide-react";
+import { Cpu, Zap, Shield, TrendingUp, Phone, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SampleBuildsDialog } from "./SampleBuildsDialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogFooter,
+  AlertDialogCancel,
+} from "@/components/ui/alert-dialog";
 
 export const Hero = () => {
   const [showSampleBuilds, setShowSampleBuilds] = useState(false);
+  const [showContactInfo, setShowContactInfo] = useState(false);
   
   const scrollToBuilder = () => {
     document.getElementById("builder-section")?.scrollIntoView({ behavior: "smooth" });
@@ -30,6 +40,16 @@ export const Hero = () => {
             Professional-grade PC configurations with real-time AED pricing, instant compatibility checks, 
             and expert-curated components. From budget builds to ultimate gaming rigs.
           </p>
+
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => setShowContactInfo(true)}
+            className="border-primary/30 hover:bg-primary/10 font-semibold"
+          >
+            <Info className="mr-2 h-5 w-5" />
+            More Info
+          </Button>
 
           <div className="flex flex-wrap gap-4 justify-center pt-4">
             <Button 
@@ -64,6 +84,60 @@ export const Hero = () => {
             open={showSampleBuilds} 
             onOpenChange={setShowSampleBuilds} 
           />
+
+          <AlertDialog open={showContactInfo} onOpenChange={setShowContactInfo}>
+            <AlertDialogContent className="max-w-md">
+              <AlertDialogHeader>
+                <AlertDialogTitle className="text-2xl gradient-text flex items-center gap-2">
+                  <Cpu className="h-6 w-6" />
+                  Professional PC Building Service
+                </AlertDialogTitle>
+                <AlertDialogDescription className="space-y-4 text-left pt-4">
+                  <p className="text-base text-foreground">
+                    Welcome! I'm <span className="font-semibold text-primary">yebois32</span>, and I specialize in building custom gaming PCs in the UAE.
+                  </p>
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">
+                      ✓ Expert PC assembly and cable management
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      ✓ Quality testing and optimization
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      ✓ Compatibility guaranteed
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      ✓ Competitive pricing in AED
+                    </p>
+                  </div>
+                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 space-y-2">
+                    <p className="text-sm font-medium text-foreground">
+                      Ready to build your dream PC?
+                    </p>
+                    <a 
+                      href="tel:+971508044624"
+                      className="flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors font-semibold"
+                    >
+                      <Phone className="h-4 w-4" />
+                      +971 50 804 4624
+                    </a>
+                  </div>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Close</AlertDialogCancel>
+                <Button 
+                  onClick={() => {
+                    setShowContactInfo(false);
+                    scrollToBuilder();
+                  }}
+                  className="bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+                >
+                  Start Building
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
