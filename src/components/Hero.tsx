@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Cpu, Zap, Shield, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SampleBuildsDialog } from "./SampleBuildsDialog";
 
 export const Hero = () => {
+  const [showSampleBuilds, setShowSampleBuilds] = useState(false);
+  
   const scrollToBuilder = () => {
     document.getElementById("builder-section")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -40,9 +44,16 @@ export const Hero = () => {
               size="lg" 
               variant="outline"
               className="border-primary/30 hover:bg-primary/10"
+              onClick={() => setShowSampleBuilds(true)}
             >
               View Sample Builds
             </Button>
+          </div>
+
+          <SampleBuildsDialog 
+            open={showSampleBuilds} 
+            onOpenChange={setShowSampleBuilds} 
+          />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
@@ -75,7 +86,6 @@ export const Hero = () => {
                 Premium selection from top brands like NVIDIA, AMD, Intel
               </p>
             </div>
-          </div>
         </div>
       </div>
     </div>
