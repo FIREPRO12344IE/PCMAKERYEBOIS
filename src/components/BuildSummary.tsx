@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Component } from "@/data/catalog";
-import { X } from "lucide-react";
+import { X, Phone } from "lucide-react";
 
 interface BuildSummaryProps {
   selectedParts: Record<string, Component>;
@@ -69,6 +69,19 @@ export const BuildSummary = ({ selectedParts, onRemovePart }: BuildSummaryProps)
           >
             Save Build
           </Button>
+
+          <div className="pt-4 border-t border-border">
+            <div className="text-center space-y-2">
+              <p className="text-sm text-muted-foreground">Need help with your build?</p>
+              <a 
+                href="tel:+971508044624"
+                className="flex items-center justify-center gap-2 text-primary hover:text-primary/80 transition-colors font-semibold"
+              >
+                <Phone className="h-4 w-4" />
+                +971 50 804 4624
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </Card>

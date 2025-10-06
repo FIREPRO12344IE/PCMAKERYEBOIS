@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Cpu, Zap, Shield, TrendingUp } from "lucide-react";
+import { Cpu, Zap, Shield, TrendingUp, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SampleBuildsDialog } from "./SampleBuildsDialog";
 
@@ -48,6 +48,16 @@ export const Hero = () => {
             >
               View Sample Builds
             </Button>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 pt-6">
+            <Phone className="h-5 w-5 text-primary" />
+            <a 
+              href="tel:+971508044624" 
+              className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+            >
+              +971 50 804 4624
+            </a>
           </div>
 
           <SampleBuildsDialog 
