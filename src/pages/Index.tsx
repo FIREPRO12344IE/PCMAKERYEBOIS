@@ -3,6 +3,7 @@ import { catalog, categoryNames, Component } from "@/data/catalog";
 import { BuildSummary } from "@/components/BuildSummary";
 import { CategorySection } from "@/components/CategorySection";
 import { Hero } from "@/components/Hero";
+import { Chatbot } from "@/components/Chatbot";
 import { Cpu } from "lucide-react";
 
 const Index = () => {
@@ -73,6 +74,8 @@ const Index = () => {
           </div>
         </div>
       </main>
+
+      <Chatbot />
     </div>
   );
 };
